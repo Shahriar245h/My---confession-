@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Someone Special ❤️</title>
+
+<style>
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:linear-gradient(135deg,#ffd1dc,#ffe8f0);
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+overflow:hidden;
+}
+
+.card{
+background:white;
+padding:30px;
+border-radius:20px;
+max-width:360px;
+text-align:center;
+box-shadow:0 10px 25px rgba(0,0,0,.2);
+animation:fadeIn 1.5s;
+}
+
+h1{
+color:#ff4d6d;
+}
+
+p{
+color:#555;
+font-size:17px;
+line-height:1.6;
+}
+
+button{
+margin-top:15px;
+padding:12px 28px;
+border:none;
+border-radius:30px;
+background:#ff4d6d;
+color:white;
+font-size:17px;
+cursor:pointer;
+transition:.3s;
+}
+
+button:hover{
+background:#e63956;
+transform:scale(1.05);
+}
+
+@keyframes fadeIn{
+from{opacity:0;transform:translateY(30px);}
+to{opacity:1;transform:translateY(0);}
+}
+
+.heart{
+position:absolute;
+color:#ff6b81;
+font-size:22px;
+animation:float 6s linear infinite;
+}
+
+@keyframes float{
+0%{transform:translateY(100vh);opacity:0;}
+100%{transform:translateY(-120vh);opacity:1;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="heart" style="left:10%;">❤️</div>
+<div class="heart" style="left:30%;animation-delay:1s;">💖</div>
+<div class="heart" style="left:55%;animation-delay:2s;">💕</div>
+<div class="heart" style="left:80%;animation-delay:3s;">❤️</div>
+
+<div class="card">
+<h1>Dear [Her Name] ❤️</h1>
+
+<p>
+From the first day I met you, something felt different.
+Your smile makes my day brighter, and thinking about you always makes me smile.
+</p>
+
+<p>
+I don't know what the future holds, but I know one thing...
+<b>I really like you.</b> 🌹
+</p>
+
+<button onclick="alert('Thank you for reading my feelings ❤️')">
+Open My Heart 💌
+</button>
+
+</div>
+
+</body>
+</html>
