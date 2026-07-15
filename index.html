@@ -1,12 +1,18 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>For Mansu ❤️</title>
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <style>
+
+*{
+box-sizing:border-box;
+}
 
 body{
 margin:0;
@@ -14,67 +20,150 @@ height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-background:linear-gradient(135deg,#ffd1dc,#ffe8f0);
-font-family:Arial;
+font-family:Arial,sans-serif;
+background:linear-gradient(135deg,#ffb6c1,#ffe4ec);
 overflow:hidden;
 }
 
-.card{
-background:white;
-width:330px;
-padding:25px;
-border-radius:25px;
-text-align:center;
-box-shadow:0 10px 30px #999;
-}
 
-.photo{
-width:130px;
-height:130px;
-border-radius:50%;
-object-fit:cover;
-border:5px solid #ff4d6d;
-}
-
-h1{
-color:#ff4d6d;
-animation:typing 3s;
-}
-
-p{
-color:#555;
-font-size:17px;
-line-height:1.6;
-}
-
-button{
-padding:12px 25px;
-margin:8px;
-border:0;
-border-radius:30px;
-background:#ff4d6d;
-color:white;
-font-size:16px;
-}
+/* floating hearts */
 
 .heart{
 position:absolute;
 font-size:25px;
-animation:move 8s infinite;
+animation:float 8s linear infinite;
 }
 
-@keyframes move{
-from{
+@keyframes float{
+
+0%{
 transform:translateY(100vh);
+opacity:0;
 }
-to{
-transform:translateY(-100vh);
+
+100%{
+transform:translateY(-120vh);
+opacity:1;
 }
+
 }
+
+
+/* card */
+
+.card{
+
+width:360px;
+background:rgba(255,255,255,.9);
+padding:30px;
+border-radius:30px;
+text-align:center;
+box-shadow:0 15px 40px rgba(0,0,0,.2);
+backdrop-filter:blur(10px);
+
+}
+
+
+
+/* image */
+
+.photo{
+
+width:150px;
+height:150px;
+border-radius:50%;
+object-fit:cover;
+border:6px solid #ff4d6d;
+box-shadow:0 0 30px #ff4d6d;
+animation:pulse 2s infinite;
+
+}
+
+
+@keyframes pulse{
+
+50%{
+transform:scale(1.05);
+}
+
+}
+
+
+
+h1{
+
+color:#ff3366;
+font-size:30px;
+
+}
+
+
+p{
+
+color:#555;
+font-size:17px;
+line-height:1.7;
+
+}
+
+
+
+button{
+
+background:#ff3366;
+color:white;
+border:none;
+padding:13px 25px;
+border-radius:30px;
+font-size:16px;
+margin:8px;
+cursor:pointer;
+
+}
+
+
+button:hover{
+
+transform:scale(1.1);
+
+}
+
+
+
+.music{
+
+background:#ff85a1;
+
+}
+
+
 
 .letter{
+
 display:none;
+margin-top:20px;
+padding:15px;
+border-radius:20px;
+background:#fff0f5;
+animation:open .8s;
+
 }
+
+
+@keyframes open{
+
+from{
+opacity:0;
+transform:scale(.5);
+}
+
+to{
+opacity:1;
+transform:scale(1);
+}
+
+}
+
 
 </style>
 
@@ -84,13 +173,14 @@ display:none;
 <body>
 
 
-<audio id="music" loop>
+<audio id="song" loop>
 <source src="dekha.mp3" type="audio/mp3">
 </audio>
 
 
-<div class="heart" style="left:20%">❤️</div>
-<div class="heart" style="left:70%">💖</div>
+<div class="heart" style="left:10%">❤️</div>
+<div class="heart" style="left:35%;animation-delay:2s">💖</div>
+<div class="heart" style="left:70%;animation-delay:4s">💕</div>
 
 
 <div class="card">
@@ -99,50 +189,52 @@ display:none;
 <img src="MANSU-IMAGE.jpg" class="photo">
 
 
-<h1>Dear Mansu ❤️</h1>
+<h1>
+Dear Mansu ❤️
+</h1>
 
 
 <p>
-From the first day I met you, something felt different.
-Your smile makes my day brighter.
+From the day I met you, you became someone special.
+Your smile makes my world brighter. 🌹
 </p>
 
 
-<p>
-I don't know what the future holds...
-<br>
-<b>I really like you 🌹</b>
-</p>
-
-
-
-<button onclick="music()">
-🎵 Music
+<button class="music" onclick="playMusic()">
+🎵 Play Music
 </button>
 
 
 <button onclick="openLetter()">
 💌 Open My Heart
 </button>
-
-
-
 <div class="letter" id="letter">
 
 <p>
 Dear Mansu ❤️
 <br><br>
-You are someone special to me.
+
+You are not just someone I like...
+You are someone who makes my days better.
+
+<br><br>
+
+I don't know what the future holds,
+but I hope you stay as a beautiful part of my life. 🌹
+
+<br><br>
+
 Will you stay with me? ❤️
+
 </p>
 
 
-<button onclick="yes()">
+<button onclick="yesLove()">
 💖 Yes
 </button>
 
 
-<button id="no" onmouseover="run()">
+<button id="noBtn" onmouseover="moveNo()">
 💔 No
 </button>
 
@@ -156,13 +248,25 @@ Will you stay with me? ❤️
 
 <script>
 
-function music(){
 
-let m=document.getElementById("music");
+function playMusic(){
 
-m.play();
+let song = document.getElementById("song");
+
+if(song.paused){
+
+song.play();
 
 }
+
+else{
+
+song.pause();
+
+}
+
+}
+
 
 
 function openLetter(){
@@ -172,25 +276,33 @@ document.getElementById("letter").style.display="block";
 }
 
 
-function yes(){
 
-alert("You made me happy ❤️");
+function yesLove(){
+
+alert("You made my heart happy ❤️");
+
+}
+
+
+
+function moveNo(){
+
+let btn=document.getElementById("noBtn");
+
+btn.style.position="absolute";
+
+btn.style.left=Math.random()*250+"px";
+
+btn.style.top=Math.random()*300+"px";
 
 }
 
 
-function run(){
-
-let n=document.getElementById("no");
-
-n.style.position="absolute";
-n.style.left=Math.random()*250+"px";
-n.style.top=Math.random()*300+"px";
-
-}
 
 </script>
 
 
+
 </body>
+
 </html>
