@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -39,15 +38,14 @@ align-items:center;
 font-size:28px;
 color:#ff4d6d;
 z-index:100;
-animation:loading 3s forwards;
+animation:hide 3s forwards;
 }
 
-@keyframes loading{
+@keyframes hide{
 0%{opacity:1;}
 80%{opacity:1;}
 100%{opacity:0;visibility:hidden;}
 }
-
 
 
 /* Card */
@@ -60,10 +58,10 @@ border-radius:30px;
 text-align:center;
 box-shadow:0 15px 35px rgba(0,0,0,.25);
 z-index:5;
-animation:cardShow 1.5s;
+animation:show 1.5s;
 }
 
-@keyframes cardShow{
+@keyframes show{
 from{
 opacity:0;
 transform:translateY(50px);
@@ -75,8 +73,7 @@ transform:translateY(0);
 }
 
 
-
-/* Photo */
+/* Image */
 
 .photo{
 width:130px;
@@ -84,16 +81,15 @@ height:130px;
 border-radius:50%;
 object-fit:cover;
 border:5px solid #ff4d6d;
-box-shadow:0 0 25px #ffb3c6;
-animation:photo 2s infinite;
+box-shadow:0 0 25px pink;
+animation:zoom 2s infinite;
 }
 
-@keyframes photo{
+@keyframes zoom{
 50%{
 transform:scale(1.05);
 }
 }
-
 
 
 /* Text */
@@ -109,20 +105,16 @@ overflow:hidden;
 white-space:nowrap;
 border-right:3px solid #ff4d6d;
 width:0;
-animation:
-typing 3s steps(20) forwards,
-blink .7s infinite;
+animation:type 3s steps(20) forwards;
 }
 
-
-@keyframes typing{
-from{width:0;}
-to{width:100%;}
+@keyframes type{
+from{
+width:0;
 }
-
-
-@keyframes blink{
-50%{border-color:transparent;}
+to{
+width:100%;
+}
 }
 
 
@@ -131,7 +123,6 @@ font-size:17px;
 color:#555;
 line-height:1.7;
 }
-
 
 
 /* Buttons */
@@ -153,11 +144,9 @@ transform:scale(1.1);
 }
 
 
-
 .music{
 background:#ff85a1;
 }
-
 
 
 /* Hearts */
@@ -165,18 +154,17 @@ background:#ff85a1;
 .heart{
 position:absolute;
 font-size:25px;
-animation:heartMove 8s linear infinite;
+animation:heart 8s linear infinite;
 }
 
+@keyframes heart{
 
-@keyframes heartMove{
-
-0%{
+from{
 transform:translateY(100vh);
 opacity:0;
 }
 
-100%{
+to{
 transform:translateY(-120vh);
 opacity:1;
 }
@@ -184,28 +172,43 @@ opacity:1;
 }
 
 
-
-/* Rose */
+/* Petals */
 
 .petal{
 position:absolute;
-top:-30px;
+top:-20px;
 font-size:25px;
-animation:petalFall 10s linear infinite;
+animation:fall 10s linear infinite;
 }
 
+@keyframes fall{
 
-@keyframes petalFall{
-
-100%{
+to{
 transform:translateY(110vh) rotate(360deg);
 }
 
 }
 
 
+/* Letter */
 
-</style>
+.letter{
+display:none;
+animation:open 1s;
+}
+
+@keyframes open{
+from{
+opacity:0;
+transform:scale(.5);
+}
+
+to{
+opacity:1;
+transform:scale(1);
+}
+}
+  </style>
 
 </head>
 
@@ -218,22 +221,33 @@ A little surprise for you ❤️
 </div>
 
 
+<!-- Music file -->
+
 <audio id="music" loop>
+
 <source src="dekha.mp3" type="audio/mp3">
+
 </audio>
-<!-- Rose Petals -->
+
+
+
+<!-- Rose petals -->
 
 <div class="petal" style="left:10%">🌹</div>
-<div class="petal" style="left:30%;animation-delay:2s">🌸</div>
-<div class="petal" style="left:55%;animation-delay:4s">🌹</div>
-<div class="petal" style="left:80%;animation-delay:1s">🌸</div>
+<div class="petal" style="left:25%;animation-delay:2s">🌸</div>
+<div class="petal" style="left:45%;animation-delay:4s">🌹</div>
+<div class="petal" style="left:70%;animation-delay:1s">🌸</div>
+<div class="petal" style="left:90%;animation-delay:3s">🌹</div>
 
 
-<!-- Floating Hearts -->
+
+<!-- Hearts -->
 
 <div class="heart" style="left:15%">❤️</div>
-<div class="heart" style="left:40%;animation-delay:2s">💖</div>
-<div class="heart" style="left:70%;animation-delay:4s">💕</div>
+<div class="heart" style="left:35%;animation-delay:2s">💖</div>
+<div class="heart" style="left:60%;animation-delay:4s">💕</div>
+<div class="heart" style="left:85%;animation-delay:1s">❤️</div>
+
 
 
 
@@ -245,34 +259,86 @@ A little surprise for you ❤️
 <img src="MANSU-IMAGE.jpg" class="photo">
 
 
+
 <h1 class="typing">
 Dear Mansu ❤️
 </h1>
 
 
+
 <p>
+
 From the first day I met you, something felt different.
 Your smile makes my day brighter, and thinking about you always makes me smile.
+
 </p>
+
 
 
 <p>
+
 I don't know what the future holds, but I know one thing...
+
 <br>
+
 <b>I really like you.</b> 🌹
+
 </p>
+
 
 
 
 <button class="music" onclick="playMusic()">
+
 🎵 Music
+
 </button>
+
 
 
 <button onclick="openHeart()">
+
 💌 Open My Heart
+
 </button>
 
 
 
-<div class="letter" id
+
+<div class="letter" id="letter">
+
+
+<p>
+
+Dear Mansu ❤️
+
+<br><br>
+
+You are someone very special to me.
+
+Thank you for being a beautiful part of my life.
+
+<br><br>
+
+Will you stay with me? ❤️
+
+</p>
+
+
+
+<button onclick="yesLove()">
+
+💖 Yes
+
+</button>
+
+
+
+<button id="no" onmouseover="moveNo()">
+
+💔 No
+
+</button>
+
+
+</div>
